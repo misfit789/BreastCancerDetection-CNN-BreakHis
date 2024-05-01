@@ -1,0 +1,17 @@
+opencv-python
+numpy
+albumentations
+pillow
+matplotlib
+scikit-learn
+fastapi
+uvicorn
+python-multipart
+tensorflow-metal
+pip
+tensorboard
+torch
+torchvision
+torchaudio
+tqdm
+seaborn
