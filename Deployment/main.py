@@ -1,5 +1,4 @@
 import base64
-import io
 import os
 import random
 
@@ -37,8 +36,8 @@ df = pd.read_csv("dataset.csv")
 
 # 处理图像数据，调整大小并归一化的函数
 def process_image(image):
-    # 将图像大小调整为 230x350
-    image = cv2.resize(image, (230, 350))
+    # 将图像大小调整为 350x230
+    image = cv2.resize(image, (350, 230))
     # 将图像转换为数组并进行归一化处理
     normalized_image = np.array(image) / 255.0
     # 增加一个新的维度来创建图像张量
@@ -62,11 +61,11 @@ async def upload_image(file: UploadFile = File(...)):
     global image
     try:
         # 读取图片数据
-        image = np.fromstring(await file.read(), np.uint8)
+        image = np.frombuffer(await file.read(), np.uint8)
         image = cv2.imdecode(image, cv2.IMREAD_COLOR)
 
         # 返回上传结果
-        upload_message = {"message": f"图片已上传，等待处理"}
+        upload_message = {"message": "图片已上传，等待处理"}
         return upload_message
 
     except Exception as e:
@@ -82,14 +81,13 @@ async def get_prediction():
         raise HTTPException(status_code=400, detail="没有图片可供预测，请先上传图片")
 
     # 调整图片大小并进行归一化
-    image = process_image(image)
+    image_tensor = process_image(image)
 
     # 使用模型进行预测
-    prediction = model.predict(image)
+    prediction = model.predict(image_tensor)
 
     predicted_value = float(prediction[0][0])
     predicted_class = "malignant" if predicted_value >= 0.5 else "benign"
-
     predicted_confidence = predicted_value if predicted_value > 0.5 else 1 - predicted_value
 
     # 构建返回的预测结果字典
@@ -116,13 +114,11 @@ async def get_random_image():
     image_file_path = image_data['image_path']
 
     # 读取图片数据存储进全局变量
-    with open(image_file_path, 'rb') as file:
-        # 将二进制数据转换为图像对象
-        image = cv2.imread(file.read())
+    image = cv2.imread(image_file_path)
 
     # 将图片转换为 Base64 编码
-    buffered = io.BytesIO()
-    img_str = base64.b64encode(buffered.getvalue()).decode()
+    _, buffer = cv2.imencode('.jpg', image)
+    img_str = base64.b64encode(buffer).decode()
 
     # 构建 JSON 对象，包含图片数据和其他文本信息
     image_info = {

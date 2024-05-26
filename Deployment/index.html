@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>图片上传与预览</title>
+    <link href="app.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div id="imagePreview" onclick="document.getElementById('fileInput').click()">
+    点击这里选择图片并预览
+</div>
+
+<input accept="image/*" id="fileInput" onchange="previewImage()" style="display: none;" type="file"/>
+
+<div class="button-group">
+    <button id="uploadLocalImage">上传本地图片</button>
+    <button id="getRandomImage">随机获取图片</button>
+</div>
+
+<button id="getPrediction">获取预测结果</button>
+
+<div id="messageBox">
+    <h2>接口消息：</h2>
+</div>
+
+<script src="app.js"></script>
+</body>
+
+</html>
