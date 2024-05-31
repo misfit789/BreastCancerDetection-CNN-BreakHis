@@ -3,11 +3,7 @@ document.getElementById('getRandomImage').addEventListener('click', getRandomIma
 document.getElementById('getPrediction').addEventListener('click', getPrediction);
 document.getElementById('uploadLocalImage').addEventListener('click', uploadImage);
 
-<<<<<<< HEAD
 let selectedFile;
-=======
-let selectedFile; // 用于存储选中的文件
->>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
 
 // 获取随机图片
 async function getRandomImage() {
@@ -26,24 +22,15 @@ async function getRandomImage() {
 
         const imageElement = document.createElement('img');
         imageElement.src = 'data:image/png;base64,' + data.image_base64;
-<<<<<<< HEAD
         imageElement.style.width = "100%";
         imageElement.style.height = "100%";
         imageElement.style.objectFit = "cover";
-=======
-        imageElement.style.width = "350px";
-        imageElement.style.height = "230px";
->>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
 
         const imagePreviewDiv = document.getElementById('imagePreview');
         imagePreviewDiv.innerHTML = '';
         imagePreviewDiv.appendChild(imageElement);
 
         addMessageToBox(`获取图片成功：${data.image_filename}, 标签：${data.label}`);
-<<<<<<< HEAD
-=======
-
->>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
     } catch (error) {
         console.error('Error fetching random image:', error);
         addMessageToBox(`获取图片失败：${error.message}`);
@@ -64,10 +51,6 @@ async function getPrediction() {
         console.log('预测置信度:', predictionResult.confidence.toFixed(2));
 
         addMessageToBox(`预测结果：类别 - ${predictionResult.class}, 置信度 - ${predictionResult.confidence.toFixed(2)}`);
-<<<<<<< HEAD
-=======
-
->>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
     } catch (error) {
         console.error('获取预测结果时发生错误:', error);
         addMessageToBox(`获取预测结果失败：${error.message}`);
@@ -88,14 +71,9 @@ function previewImage() {
             imagePreviewDiv.innerHTML = '';
             const imageElement = document.createElement('img');
             imageElement.src = e.target.result;
-<<<<<<< HEAD
             imageElement.style.width = "100%";
             imageElement.style.height = "100%";
             imageElement.style.objectFit = "cover";
-=======
-            imageElement.style.width = "350px";
-            imageElement.style.height = "230px";
->>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
             imagePreviewDiv.appendChild(imageElement);
         };
         reader.readAsDataURL(selectedFile);
@@ -124,10 +102,6 @@ async function uploadImage() {
 
         const data = await response.json();
         addMessageToBox(data.message);
-<<<<<<< HEAD
-=======
-
->>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
     } catch (error) {
         console.error('上传图片时发生错误:', error);
         addMessageToBox(`上传图片失败：${error.message}`);
@@ -136,7 +110,6 @@ async function uploadImage() {
 
 // 添加消息到消息框
 function addMessageToBox(message) {
-<<<<<<< HEAD
     const messageBoxContent = document.getElementById('messageBoxContent');
     const messageElement = document.createElement('p');
     messageElement.textContent = message;
@@ -197,10 +170,3 @@ function previewImageFromFile(file) {
         reader.readAsDataURL(file);
     }
 }
-=======
-    const messageBox = document.getElementById('messageBox');
-    const messageElement = document.createElement('p');
-    messageElement.textContent = message;
-    messageBox.appendChild(messageElement);
-}
->>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
