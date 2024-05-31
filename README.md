@@ -109,7 +109,7 @@ BreastCancerDetection-CNN-BreakHis
 <a name="许可证"></a>
 ## 7. 许可证
 
-本项目采用 [MIT License](LICENSE) 许可证进行许可。
+本项目根据 MIT 许可证分发。详见 [MIT License](LICENSE) 。
 
 <a name="联系方式"></a>
 ## 8. 联系方式
