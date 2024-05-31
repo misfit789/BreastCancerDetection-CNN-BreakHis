@@ -1,0 +1,4 @@
+    echo ".DS_Store" >> .gitignore
+    echo ".idea/" >> .gitignore
+    echo "ModelTraining/DPTL-VGG16.keras" >> .gitignore
+    echo "ModelTraining/edited/" >> .gitignore
