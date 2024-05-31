@@ -114,7 +114,6 @@ BreastCancerDetection-CNN-BreakHis
 <a name="联系方式"></a>
 ## 8. 联系方式
 
-希望此项目对你有所帮助，若有任何问题，请随时联系我。
+本项目是个人毕业设计项目，希望对你有所帮助，若有任何问题，请随时联系我。
 
 邮箱：chenwei@alu.cau.edu.cn
-```
