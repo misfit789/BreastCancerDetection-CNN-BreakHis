@@ -2,3 +2,4 @@
     echo ".idea/" >> .gitignore
     echo "ModelTraining/DPTL-VGG16.keras" >> .gitignore
     echo "ModelTraining/edited/" >> .gitignore
+.DS_Store
