@@ -13,7 +13,7 @@
 
 ## 项目介绍
 
-本项目是中国农业大学本科（二学位）的毕业设计，题目为《基于深度学习的乳腺癌病理组织分类方法研究》。项目采用公开的 BreakHis 数据集，利用传统卷积神经网络（CNN）模型，并基于 TensorFlow 框架进行训练与测试。项目开发环境使用 Python 3.9。
+本项目是中国农业大学本科（二学位）的毕业设计，题目为《基于深度学习的乳腺癌病理组织分类方法研究》。项目采用公开的 BreakHis 数据集，利用传统卷积神经网络（CNN）模型，并基于 TensorFlow 框架进行训练与测试。项目开发环境使用 Python 3.9，FastAPI。
 
 项目文件分为两个主要部分：模型训练和前端应用系统。
 
@@ -30,32 +30,33 @@ cd BreastCancerDetection-CNN-BreakHis
 <a name="模型训练部分"></a>
 ## 2. 模型训练部分
 
-1. 下载数据集到ModelTraining路径，并修改数据集压缩包的名称为`dataset.zip`。
+1. 在执行下载命令前，请确保工作目录已经切换到 ModelTraining 路径：
+   ```bash
+   cd ModelTraining
+   ```
+  
+2. 接下来，下载数据集到ModelTraining路径，并修改数据集压缩包的名称为`dataset.zip`。
 
-   **适用于 macOS 和 Linux 系统**：
-
-   在 `ModelTraining` 路径中使用以下命令：
+   -  **适用于 macOS 和 Linux 系统**，在 `ModelTraining` 路径中使用以下命令：
    
    ```bash
    wget http://www.inf.ufpr.br/vri/databases/BreaKHis_v1.tar.gz -O ModelTraining/dataset.zip
    ```
    
-   **适用于 Windows 系统**：
-   
-   在 `ModelTraining` 目录下使用 PowerShell 命令：
+   -  **适用于 Windows 系统**，在 `ModelTraining` 目录下使用 PowerShell 命令：
    
    ```powershell
    Invoke-WebRequest -Uri "http://www.inf.ufpr.br/vri/databases/BreaKHis_v1.tar.gz" -OutFile "ModelTraining\dataset.zip"
    ```
 
-2. 安装`ModelTraining`路径中`requirements.txt`文件中的库。
+3. 安装`ModelTraining`路径中`requirements.txt`文件中的库。
 
    安装命令如下：
    ```bash
    pip install -r ModelTraining/requirements.txt
    ```
 
-3. 运行`DPTL-VGG16.ipynb`文件，过程中产生的图片会保存在同级`OutputImages`路径中。
+4. 运行`DPTL-VGG16.ipynb`文件，过程中产生的图片会保存在同级`OutputImages`路径中。
 
 <a name="前端应用系统"></a>
 ## 3. 前端应用系统
