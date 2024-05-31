@@ -1,8 +1,13 @@
 import base64
+<<<<<<< HEAD
 import logging
 import os
 import random
 import subprocess
+=======
+import os
+import random
+>>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
 
 import cv2
 import numpy as np
@@ -14,8 +19,11 @@ from fastapi.middleware.cors import CORSMiddleware
 
 # 定义模型路径
 MODEL_PATH = "../ModelTraining/DPTL-VGG16.keras"
+<<<<<<< HEAD
 DATASET_SCRIPT_PATH = "DatasetToCSV.py"
 CSV_FILE_PATH = "dataset.csv"
+=======
+>>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
 
 app = FastAPI()
 
@@ -34,9 +42,14 @@ app.add_middleware(
     allow_headers=["*"],  # 允许所有头部
 )
 
+<<<<<<< HEAD
 # 设置日志配置
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+=======
+# 加载CSV文件数据
+df = pd.read_csv("dataset.csv")
+>>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
 
 
 # 处理图像数据，调整大小并归一化的函数
@@ -53,6 +66,7 @@ def process_image(image):
 # 加载模型
 def load_model():
     global model
+<<<<<<< HEAD
     try:
         model = tf.keras.models.load_model(MODEL_PATH)
         logger.info("模型加载成功")
@@ -69,13 +83,19 @@ def generate_csv():
     except subprocess.CalledProcessError as e:
         logger.error(f"生成 CSV 文件失败: {e.stderr}")
         raise RuntimeError("生成 CSV 文件失败")
+=======
+    model = tf.keras.models.load_model(MODEL_PATH)
+>>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
 
 
 @app.on_event("startup")
 async def startup_event():
+<<<<<<< HEAD
     generate_csv()
     global df
     df = pd.read_csv(CSV_FILE_PATH)
+=======
+>>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
     load_model()
 
 
@@ -87,22 +107,30 @@ async def upload_image(file: UploadFile = File(...)):
         image = np.frombuffer(await file.read(), np.uint8)
         image = cv2.imdecode(image, cv2.IMREAD_COLOR)
 
+<<<<<<< HEAD
         if image is None:
             raise ValueError("无法解码图像，图像文件可能已损坏")
 
+=======
+>>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
         # 返回上传结果
         upload_message = {"message": "图片已上传，等待处理"}
         return upload_message
 
     except Exception as e:
+<<<<<<< HEAD
         logger.error(f"上传图片失败: {e}")
         raise HTTPException(status_code=500, detail=f"上传图片失败: {e}")
+=======
+        raise HTTPException(status_code=500, detail=str(e))
+>>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
 
 
 @app.get("/get_prediction")
 async def get_prediction():
     global image, model
 
+<<<<<<< HEAD
     try:
         # 检查是否有图片上传
         if image is None:
@@ -132,11 +160,39 @@ async def get_prediction():
     except Exception as e:
         logger.error(f"预测失败: {e}")
         raise HTTPException(status_code=500, detail=f"预测失败: {e}")
+=======
+    # 检查是否有图片上传
+    if image is None:
+        raise HTTPException(status_code=400, detail="没有图片可供预测，请先上传图片")
+
+    # 调整图片大小并进行归一化
+    image_tensor = process_image(image)
+
+    # 使用模型进行预测
+    prediction = model.predict(image_tensor)
+
+    predicted_value = float(prediction[0][0])
+    predicted_class = "malignant" if predicted_value >= 0.5 else "benign"
+    predicted_confidence = predicted_value if predicted_value > 0.5 else 1 - predicted_value
+
+    # 构建返回的预测结果字典
+    prediction_result = {
+        "class": predicted_class,
+        "confidence": predicted_confidence
+    }
+
+    # 初始化全局变量
+    image = None
+
+    # 返回预测结果
+    return prediction_result
+>>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
 
 
 @app.get("/get_random_image")
 async def get_random_image():
     global image
+<<<<<<< HEAD
     try:
         # 生成随机数，随机选取其中一条图片数据（相对路径、类别）
         random_index = random.randint(0, len(df) - 1)
@@ -171,6 +227,31 @@ async def get_random_image():
     except Exception as e:
         logger.error(f"获取随机图片失败: {e}")
         raise HTTPException(status_code=500, detail=f"获取随机图片失败: {e}")
+=======
+    # 生成随机数，随机选取其中一条图片数据（相对路径、类别）
+    random_index = random.randint(0, len(df) - 1)
+    image_data = df.iloc[random_index].to_dict()
+
+    # 读取图片文件路径
+    image_file_path = image_data['image_path']
+
+    # 读取图片数据存储进全局变量
+    image = cv2.imread(image_file_path)
+
+    # 将图片转换为 Base64 编码
+    _, buffer = cv2.imencode('.jpg', image)
+    img_str = base64.b64encode(buffer).decode()
+
+    # 构建 JSON 对象，包含图片数据和其他文本信息
+    image_info = {
+        "image_base64": img_str,
+        "image_filename": os.path.basename(image_file_path),
+        "label": image_data['label']
+    }
+
+    # 返回图片JSON对象
+    return image_info
+>>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
 
 
 if __name__ == "__main__":

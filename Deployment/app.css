@@ -1,17 +1,29 @@
+<<<<<<< HEAD
 /* 全局样式 */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f7f7f7;
+=======
+/* 设置全局样式 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+>>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+<<<<<<< HEAD
     min-height: 100vh;
+=======
+    height: 100vh;
+>>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
     flex-direction: column;
     color: #333;
 }
 
+<<<<<<< HEAD
 header {
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(20px);
@@ -48,10 +60,20 @@ header h1 {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+=======
+/* 设置图片预览框样式 */
+#imagePreview {
+    width: 350px;
+    height: 230px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    display: flex;
+>>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
     justify-content: center;
     align-items: center;
     cursor: pointer;
     margin-bottom: 20px;
+<<<<<<< HEAD
     background-color: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
     transition: border-color 0.3s, background-color 0.3s;
@@ -74,11 +96,23 @@ header h1 {
 }
 
 /* 按钮组样式 */
+=======
+    background-color: #fff;
+    transition: border-color 0.3s;
+}
+
+#imagePreview:hover {
+    border-color: #007BFF;
+}
+
+/* 设置按钮组样式 */
+>>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
 .button-group {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
     width: 100%;
+<<<<<<< HEAD
     max-width: 400px;
 }
 
@@ -130,3 +164,56 @@ header h1 {
 #clearMessages {
     margin-top: 10px;
 }
+=======
+    max-width: 350px;
+}
+
+/* 设置按钮样式 */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* 设置消息框样式 */
+#messageBox {
+    width: 100%;
+    max-width: 350px;
+    height: 200px; /* 添加消息框的最大高度 */
+    background-color: #fff;
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* 添加垂直滚动条 */
+}
+
+#messageBox h2 {
+    margin: 5px 0;
+}
+
+#messageBox p {
+    margin: 5px 0;
+}
+
+
+/* 隐藏文件输入 */
+input[type="file"] {
+    display: none;
+}
+>>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8

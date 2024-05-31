@@ -3,14 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>乳腺癌病理组织分类系统</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+=======
+    <title>图片上传与预览</title>
+>>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
     <link href="app.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
+<<<<<<< HEAD
 <header>
     <h1>乳腺癌病理组织分类系统</h1>
 </header>
@@ -40,9 +45,30 @@
     </div>
 
     <button class="btn btn-danger" id="clearMessages" onclick="clearMessages()">清除消息记录</button>
+=======
+<div id="imagePreview" onclick="document.getElementById('fileInput').click()">
+    点击这里选择图片并预览
+</div>
+
+<input accept="image/*" id="fileInput" onchange="previewImage()" style="display: none;" type="file"/>
+
+<div class="button-group">
+    <button id="uploadLocalImage">上传本地图片</button>
+    <button id="getRandomImage">随机获取图片</button>
+</div>
+
+<button id="getPrediction">获取预测结果</button>
+
+<div id="messageBox">
+    <h2>接口消息：</h2>
+>>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
 </div>
 
 <script src="app.js"></script>
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> f30e8c53672116fdef800be7ef7885daca1352c8
