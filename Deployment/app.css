@@ -1,0 +1,132 @@
+/* 全局样式 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    color: #333;
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    width: 100%;
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #007BFF;
+    font-weight: 600;
+}
+
+/* 容器样式 */
+#container {
+    margin-top: 120px; /* 调整页面内容位置 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 图片预览框样式 */
+#imagePreview {
+    width: 400px;
+    height: 250px;
+    border: 2px dashed #007BFF;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+#imagePreview i {
+    font-size: 40px;
+    color: #007BFF;
+}
+
+#imagePreview p {
+    margin-top: 10px;
+    color: #007BFF;
+    font-size: 16px;
+}
+
+#imagePreview:hover {
+    border-color: #0056b3;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* 按钮组样式 */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.button-group button {
+    flex: 1;
+    margin: 0 10px;
+}
+
+/* 消息框样式 */
+#messageBox {
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    margin-top: 25px;
+    padding: 0;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* 隐藏超出部分 */
+}
+
+#messageBoxHeader {
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* 分隔线 */
+}
+
+#messageBoxHeader h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#messageBoxContent {
+    height: 100%;
+    overflow-y: auto; /* 添加垂直滚动条 */
+    padding: 15px;
+    background-color: #fcfcfc;
+}
+
+#messageBoxContent p {
+    margin: 5px 0;
+}
+
+#clearMessages {
+    margin-top: 10px;
+}
